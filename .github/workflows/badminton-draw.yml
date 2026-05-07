@@ -1,0 +1,22 @@
+name: Badminton Group Draw
+
+on:
+  push:
+    paths:
+      - "badminton_group_draw/**"
+      - ".github/workflows/badminton-draw.yml"
+  workflow_dispatch:
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run draw
+        run: python badminton_group_draw/badminton_group_draw.py
